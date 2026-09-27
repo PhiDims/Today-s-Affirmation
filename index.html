@@ -1,22 +1,1017 @@
-Today's Affirmation
-Sunday 27 September
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Today's Affirmation — A Daily Companion for Reflection &amp; Growth</title>
+<meta name="description" content="One grounded affirmation a day, with a reflection and an action.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg: #F6F2EA;
+  --bg-elevated: #FFFFFF;
+  --bg-soft: #EEE8DC;
+  --ink: #2C2A24;
+  --ink-soft: #635E52;
+  --ink-faint: #8B8577;
+  --line: #E2DACB;
+  --sage: #6E8F72;
+  --sage-deep: #4F6E54;
+  --dusty-blue: #6D8CA3;
+  --sand: #C6AD86;
+  --clay: #B98B6D;
 
-1 day with you
-Healing
-Healing is not a return to who I was, but a becoming of who I am now.
+  --cat-healing: #6D8CA3;
+  --cat-confidence: #B99B4E;
+  --cat-gratitude: #6E8F72;
+  --cat-purpose: #B98B6D;
+  --cat-relationships: #BD8078;
+  --cat-resilience: #4F7C78;
+  --cat-boundaries: #6B7A8F;
+  --cat-forgiveness: #997E92;
+  --cat-mindfulness: #78A091;
+  --cat-growth: #8A9A5B;
 
-Reflect
-What has this season of your life taught you that your old self didn't know?
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 8px 30px rgba(44, 42, 36, 0.08);
+  --shadow-soft: 0 2px 10px rgba(44, 42, 36, 0.06);
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+html[data-theme="dark"]{
+  --bg: #1E211B;
+  --bg-elevated: #262A22;
+  --bg-soft: #2B2F26;
+  --ink: #EFEAE0;
+  --ink-soft: #B9B3A4;
+  --ink-faint: #837D6E;
+  --line: #383C31;
+  --shadow: 0 8px 30px rgba(0,0,0,0.35);
+  --shadow-soft: 0 2px 10px rgba(0,0,0,0.25);
+}
 
-✎ Write your thoughts on this…
-Today's action
-Name one way you've changed for the better this year, and say it out loud.
+*{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+html,body{margin:0; padding:0; height:100%;}
+body{
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  transition: background 0.4s ease, color 0.4s ease;
+  overscroll-behavior-y: none;
+}
+h1,h2,h3{font-family: var(--font-display); font-weight: 500; margin: 0;}
+p{margin:0;}
+button{font-family: var(--font-body); cursor:pointer; border:none; background:none; color: inherit;}
+input, textarea{font-family: var(--font-body); color: inherit;}
+::selection{background: var(--sage); color:#fff;}
 
-Save
-Listen
-Share
-Today
-Browse
-Journal
-Saved
-Settings
+.app{
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background: var(--bg);
+}
+
+/* ============ HEADER ============ */
+.app-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 22px 22px 8px;
+}
+.brand{display:flex; flex-direction:column; gap:2px;}
+.brand-mark{font-family: var(--font-display); font-size: 17px; letter-spacing: 0.1px;}
+.brand-date{font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em;}
+.header-actions{display:flex; gap:8px;}
+.icon-btn{
+  width:38px; height:38px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--bg-elevated); box-shadow: var(--shadow-soft);
+  color: var(--ink-soft);
+  transition: transform 0.15s ease, color 0.2s ease;
+}
+.icon-btn:active{transform: scale(0.92);}
+.icon-btn svg{width:18px; height:18px;}
+
+/* ============ MAIN / SCREENS ============ */
+main{flex:1; padding: 4px 20px 100px; position:relative;}
+.screen{display:none; animation: fadeIn 0.35s ease;}
+.screen.active{display:block;}
+@keyframes fadeIn{ from{opacity:0; transform: translateY(6px);} to{opacity:1; transform: translateY(0);} }
+
+/* ---- Streak path ---- */
+.streak-row{display:flex; align-items:center; gap:6px; padding: 6px 2px 18px;}
+.streak-dot{width:7px; height:7px; border-radius:50%; background: var(--line); flex-shrink:0;}
+.streak-dot.filled{background: var(--sage);}
+.streak-label{margin-left:8px; font-size:12px; color: var(--ink-faint); white-space:nowrap;}
+
+/* ---- Breathing orb + affirmation card ---- */
+.today-card{
+  position:relative;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 46px 26px 30px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  text-align:center;
+}
+.orb{
+  position:absolute; top:50%; left:50%;
+  width:280px; height:280px;
+  transform: translate(-50%,-50%) scale(1);
+  border-radius:50%;
+  background: radial-gradient(circle at 50% 45%, var(--orb-color, var(--sage)) 0%, transparent 68%);
+  opacity: 0.16;
+  animation: breathe 7s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes breathe{
+  0%,100%{ transform: translate(-50%,-50%) scale(0.92); opacity:0.13; }
+  50%{ transform: translate(-50%,-50%) scale(1.08); opacity: 0.22; }
+}
+@media (prefers-reduced-motion: reduce){ .orb{animation:none;} }
+
+.cat-pill{
+  position:relative; z-index:1;
+  display:inline-flex; align-items:center; gap:6px;
+  font-size: 11px; letter-spacing:0.06em; text-transform:uppercase;
+  color: var(--pill-color, var(--sage-deep));
+  background: color-mix(in srgb, var(--pill-color, var(--sage)) 14%, transparent);
+  padding: 5px 12px; border-radius: 999px; font-weight:600;
+  margin-bottom: 22px;
+}
+.affirmation-text{
+  position:relative; z-index:1;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.42;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.today-card .divider{
+  width:32px; height:1px; background: var(--line); margin: 24px auto;
+}
+.block-label{
+  font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color: var(--ink-faint);
+  margin-bottom:8px; font-weight:600; text-align:left;
+}
+.block-text{
+  font-size:15px; line-height:1.55; color: var(--ink-soft); text-align:left;
+}
+.today-block{position:relative; z-index:1; margin-top: 18px;}
+.action-row{
+  display:flex; align-items:flex-start; gap:10px; text-align:left;
+}
+.check-box{
+  margin-top:2px; width:20px; height:20px; border-radius:6px; border: 1.6px solid var(--line);
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  transition: all 0.2s ease;
+}
+.check-box.checked{ background: var(--sage); border-color: var(--sage); }
+.check-box svg{width:12px; height:12px; stroke:#fff; opacity:0; transition: opacity 0.15s ease;}
+.check-box.checked svg{opacity:1;}
+
+.card-actions{
+  position:relative; z-index:1;
+  display:flex; justify-content:center; gap:10px; margin-top: 26px;
+}
+.pill-btn{
+  display:flex; align-items:center; gap:6px;
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--bg-soft); font-size:13px; font-weight:500; color: var(--ink-soft);
+  transition: all 0.18s ease;
+}
+.pill-btn svg{width:15px; height:15px;}
+.pill-btn.active{ background: var(--sage); color:#fff; }
+.pill-btn:active{transform: scale(0.95);}
+
+.journal-quick{
+  margin-top: 16px; width:100%; text-align:left;
+  border: 1.4px dashed var(--line); border-radius: var(--radius-md);
+  padding: 12px 14px; font-size: 13.5px; color: var(--ink-faint);
+  background: transparent;
+}
+.journal-quick:active{ background: var(--bg-soft); }
+
+/* ---- section headings shared ---- */
+.screen-head{ padding: 18px 2px 16px; }
+.screen-head h2{ font-size: 22px; }
+.screen-head .sub{ color: var(--ink-faint); font-size: 13px; margin-top:4px; }
+
+/* ---- Browse ---- */
+.search-bar{
+  display:flex; align-items:center; gap:8px;
+  background: var(--bg-elevated); border-radius: 14px; padding: 11px 14px;
+  box-shadow: var(--shadow-soft); margin-bottom: 14px;
+}
+.search-bar svg{width:16px; height:16px; color: var(--ink-faint); flex-shrink:0;}
+.search-bar input{border:none; background:transparent; outline:none; width:100%; font-size:14px; color: var(--ink);}
+.chip-row{display:flex; gap:8px; overflow-x:auto; padding: 2px 0 16px; scrollbar-width:none;}
+.chip-row::-webkit-scrollbar{display:none;}
+.chip{
+  flex-shrink:0; padding: 7px 14px; border-radius:999px; font-size:12.5px; font-weight:500;
+  background: var(--bg-elevated); color: var(--ink-soft); box-shadow: var(--shadow-soft);
+  border: 1.4px solid transparent;
+}
+.chip.active{ color:#fff; }
+.list-card{
+  background: var(--bg-elevated); border-radius: var(--radius-md); padding: 16px 16px;
+  box-shadow: var(--shadow-soft); margin-bottom: 10px; position:relative;
+  border-left: 3px solid var(--card-color, var(--sage));
+}
+.list-card .cat-tag{ font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color: var(--card-color, var(--sage-deep)); font-weight:700; margin-bottom:6px; }
+.list-card .aff{ font-family: var(--font-display); font-style: italic; font-size: 16.5px; line-height:1.4; padding-right: 30px; }
+.list-card .fav-toggle{ position:absolute; top:14px; right:14px; color: var(--ink-faint); }
+.list-card .fav-toggle.active{ color: var(--clay); }
+.list-card .fav-toggle svg{width:17px; height:17px;}
+.empty-state{ text-align:center; padding: 50px 20px; color: var(--ink-faint); }
+.empty-state svg{width:34px; height:34px; margin-bottom:10px; opacity:0.5;}
+.empty-state p{ font-size: 14px; line-height:1.5; }
+
+/* ---- Journal ---- */
+.journal-entry{
+  background: var(--bg-elevated); border-radius: var(--radius-md); padding: 16px;
+  box-shadow: var(--shadow-soft); margin-bottom: 12px;
+}
+.journal-entry .je-date{ font-size:11px; color: var(--ink-faint); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
+.journal-entry .je-prompt{ font-size:13px; color: var(--ink-soft); font-style:italic; margin-bottom:8px; }
+.journal-entry .je-text{ font-size:14.5px; line-height:1.55; white-space:pre-wrap; }
+.journal-entry .je-actions{ display:flex; gap:14px; margin-top:10px; }
+.je-link{ font-size:12px; color: var(--ink-faint); text-decoration:underline; }
+
+.modal-overlay{
+  position:fixed; inset:0; background: rgba(20,18,14,0.45);
+  display:none; align-items:flex-end; justify-content:center; z-index: 50;
+  backdrop-filter: blur(2px);
+}
+.modal-overlay.open{ display:flex; animation: fadeIn 0.2s ease; }
+.modal-sheet{
+  width:100%; max-width:480px; background: var(--bg-elevated);
+  border-radius: 26px 26px 0 0; padding: 22px 22px 30px; box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+  max-height: 85vh; overflow-y:auto;
+}
+.modal-sheet h3{ font-size:19px; margin-bottom:4px; }
+.modal-sheet .sub{ font-size:13px; color: var(--ink-faint); margin-bottom:16px; }
+.modal-sheet textarea{
+  width:100%; min-height:130px; border: 1.4px solid var(--line); border-radius: 14px;
+  padding: 12px 14px; font-size:14.5px; line-height:1.5; resize:vertical; outline:none;
+  background: var(--bg); color: var(--ink);
+}
+.modal-sheet textarea:focus{ border-color: var(--sage); }
+.modal-btn-row{ display:flex; gap:10px; margin-top:16px; }
+.btn{
+  flex:1; padding: 13px; border-radius: 14px; font-size:14px; font-weight:600; text-align:center;
+}
+.btn-primary{ background: var(--sage); color:#fff; }
+.btn-ghost{ background: var(--bg-soft); color: var(--ink-soft); }
+.btn:active{ transform: scale(0.97); }
+.modal-close{ position:absolute; top:16px; right:20px; color: var(--ink-faint); }
+
+/* ---- Favourites ---- */
+/* reuses .list-card */
+
+/* ---- Settings ---- */
+.settings-group{ background: var(--bg-elevated); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); margin-bottom:16px; overflow:hidden; }
+.settings-row{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding: 16px 18px; border-bottom: 1px solid var(--line);
+}
+.settings-row:last-child{ border-bottom:none; }
+.settings-row .label{ font-size:14.5px; font-weight:500; }
+.settings-row .desc{ font-size:12px; color: var(--ink-faint); margin-top:3px; line-height:1.4; }
+.switch{
+  width:44px; height:26px; border-radius:999px; background: var(--line); position:relative; flex-shrink:0;
+  transition: background 0.2s ease;
+}
+.switch.on{ background: var(--sage); }
+.switch::after{
+  content:''; position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%;
+  background:#fff; transition: transform 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+.switch.on::after{ transform: translateX(18px); }
+.theme-toggle-row{ display:flex; gap:8px; }
+.theme-opt{
+  flex:1; padding:10px; border-radius:12px; text-align:center; font-size:13px; font-weight:500;
+  background: var(--bg-soft); color: var(--ink-soft); border: 1.6px solid transparent;
+}
+.theme-opt.active{ border-color: var(--sage); color: var(--sage-deep); }
+.settings-note{ font-size:12px; color: var(--ink-faint); line-height:1.6; padding: 4px 4px 20px; }
+
+/* ============ BOTTOM NAV ============ */
+.bottom-nav{
+  position:fixed; bottom:0; left:50%; transform: translateX(-50%);
+  width:100%; max-width:480px; background: var(--bg-elevated);
+  border-top: 1px solid var(--line);
+  display:flex; justify-content:space-around; align-items:center;
+  padding: 10px 6px calc(10px + env(safe-area-inset-bottom));
+  z-index: 20;
+}
+.nav-btn{
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  color: var(--ink-faint); font-size:10.5px; font-weight:500; padding:4px 10px; border-radius:12px;
+  transition: color 0.2s ease;
+}
+.nav-btn svg{ width:21px; height:21px; }
+.nav-btn.active{ color: var(--sage-deep); }
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed; bottom:92px; left:50%; transform: translateX(-50%) translateY(10px);
+  background: var(--ink); color: var(--bg); font-size:13px; font-weight:500;
+  padding: 11px 20px; border-radius: 999px; opacity:0; pointer-events:none;
+  transition: all 0.25s ease; z-index: 60; white-space:nowrap;
+}
+.toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+
+/* focus visibility */
+button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline: 2px solid var(--sage); outline-offset: 2px;
+}
+
+@media (min-width: 481px){
+  body{ background: var(--bg-soft); }
+  .app{ box-shadow: 0 0 60px rgba(0,0,0,0.06); min-height: 100vh; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">Today's Affirmation</span>
+      <span class="brand-date" id="headerDate">—</span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== TODAY ===================== -->
+    <section class="screen active" id="screen-today">
+      <div class="streak-row" id="streakRow"></div>
+
+      <div class="today-card">
+        <div class="orb" id="orb"></div>
+        <span class="cat-pill" id="todayCatPill"></span>
+        <p class="affirmation-text" id="todayAffirmation"></p>
+
+        <div class="divider"></div>
+
+        <div class="today-block">
+          <div class="block-label">Reflect</div>
+          <p class="block-text" id="todayReflection"></p>
+          <button class="journal-quick" id="journalQuickBtn">✎ Write your thoughts on this…</button>
+        </div>
+
+        <div class="today-block">
+          <div class="block-label">Today's action</div>
+          <div class="action-row">
+            <div class="check-box" id="actionCheck">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p class="block-text" id="todayAction" style="cursor:pointer;"></p>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="pill-btn" id="todayFavBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9C.5 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.4C11.3 5.2 12.8 4 15 4c4 0 5.5 4 4 8-2.5 4.4-10 9-10 9z"/></svg>
+            Save
+          </button>
+          <button class="pill-btn" id="todaySpeakBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6h4l5 5V4L8 9H4z"/></svg>
+            Listen
+          </button>
+          <button class="pill-btn" id="todayShareBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.2M8.3 13.3l7.4 4.2"/></svg>
+            Share
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BROWSE ===================== -->
+    <section class="screen" id="screen-browse">
+      <div class="screen-head"><h2>Browse</h2><div class="sub">Explore every affirmation by theme, or search for what you need today.</div></div>
+      <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search affirmations…">
+      </div>
+      <div class="chip-row" id="chipRow"></div>
+      <div id="browseList"></div>
+    </section>
+
+    <!-- ===================== JOURNAL ===================== -->
+    <section class="screen" id="screen-journal">
+      <div class="screen-head"><h2>Journal</h2><div class="sub">A private space for your reflections. Only visible to you, on this device.</div></div>
+      <div id="journalList"></div>
+    </section>
+
+    <!-- ===================== FAVOURITES ===================== -->
+    <section class="screen" id="screen-favourites">
+      <div class="screen-head"><h2>Favourites</h2><div class="sub">Affirmations you've chosen to keep close.</div></div>
+      <div id="favouritesList"></div>
+    </section>
+
+    <!-- ===================== SETTINGS ===================== -->
+    <section class="screen" id="screen-settings">
+      <div class="screen-head"><h2>Settings</h2><div class="sub">Make this space feel like yours.</div></div>
+
+      <div class="settings-group">
+        <div class="settings-row" style="display:block;">
+          <div class="label" style="margin-bottom:10px;">Appearance</div>
+          <div class="theme-toggle-row">
+            <button class="theme-opt" id="themeOptLight">Light</button>
+            <button class="theme-opt" id="themeOptDark">Dark</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-row">
+          <div>
+            <div class="label">Daily reminder</div>
+            <div class="desc">A gentle nudge to visit each day. Requires browser notification permission and this tab open — a native app would handle this quietly in the background.</div>
+          </div>
+          <div class="switch" id="reminderSwitch"></div>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="label">Spoken affirmations</div>
+            <div class="desc">Uses your device's built-in voice to read each affirmation aloud.</div>
+          </div>
+          <div class="switch" id="audioSwitch"></div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-row">
+          <div>
+            <div class="label">Your data</div>
+            <div class="desc">Reflections, favourites and streaks are stored securely on this device only. Account sync across devices is coming soon.</div>
+          </div>
+        </div>
+        <div class="settings-row" id="clearDataRow">
+          <div class="label" style="color:var(--clay);">Clear all local data</div>
+        </div>
+      </div>
+
+      <p class="settings-note">Daily Grounding · a companion for intentional living.<br>New affirmations are added regularly — this library currently holds <span id="libCount"></span> unique reflections and grows toward a full year of 365.</p>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-screen="today">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      Today
+    </button>
+    <button class="nav-btn" data-screen="browse">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      Browse
+    </button>
+    <button class="nav-btn" data-screen="journal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>
+      Journal
+    </button>
+    <button class="nav-btn" data-screen="favourites">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9C.5 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.4C11.3 5.2 12.8 4 15 4c4 0 5.5 4 4 8-2.5 4.4-10 9-10 9z"/></svg>
+      Saved
+    </button>
+    <button class="nav-btn" data-screen="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.9 7.9 0 000-2l2-1.6-2-3.4-2.4.8a8 8 0 00-1.7-1L14.8 3h-4l-.5 2.8a8 8 0 00-1.7 1l-2.4-.8-2 3.4L6.2 11a7.9 7.9 0 000 2l-2 1.6 2 3.4 2.4-.8a8 8 0 001.7 1l.5 2.8h4l.5-2.8a8 8 0 001.7-1l2.4.8 2-3.4z"/></svg>
+      Settings
+    </button>
+  </nav>
+</div>
+
+<!-- Journal write modal -->
+<div class="modal-overlay" id="journalModal">
+  <div class="modal-sheet">
+    <button class="modal-close" id="journalModalClose" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3>Today's reflection</h3>
+    <div class="sub" id="journalModalPrompt"></div>
+    <textarea id="journalTextarea" placeholder="Write freely — there's no wrong way to reflect…"></textarea>
+    <div class="modal-btn-row">
+      <button class="btn btn-ghost" id="journalCancelBtn">Cancel</button>
+      <button class="btn btn-primary" id="journalSaveBtn">Save entry</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<canvas id="shareCanvas" width="1080" height="1350" style="display:none;"></canvas>
+
+<script>
+/* ======================================================================
+   DAILY GROUNDING — data & logic
+   To extend the library toward the full 365, add more objects to AFFIRMATIONS
+   following the same {id, category, text, reflection, action} shape.
+   The day-of-year rotation automatically expands as the array grows.
+   ====================================================================== */
+
+const CATEGORIES = [
+  { key:'healing', label:'Healing' },
+  { key:'confidence', label:'Confidence' },
+  { key:'gratitude', label:'Gratitude' },
+  { key:'purpose', label:'Purpose' },
+  { key:'relationships', label:'Relationships' },
+  { key:'resilience', label:'Resilience' },
+  { key:'boundaries', label:'Boundaries' },
+  { key:'forgiveness', label:'Forgiveness' },
+  { key:'mindfulness', label:'Mindfulness' },
+  { key:'growth', label:'Growth' },
+];
+
+const AFFIRMATIONS = [
+{id:'healing-1',category:'healing',text:"I am allowed to heal at my own pace, without apology or timeline.",reflection:"What would it look like to give yourself permission to heal more slowly than you think you should?",action:"Notice one moment today where you rush your own feelings — pause and let it take up as much space as it needs."},
+{id:'confidence-1',category:'confidence',text:"Confidence is not the absence of doubt; it is moving forward with it.",reflection:"What is one thing you've been waiting to feel 'ready' for before you act?",action:"Take one small step today toward that thing, doubt and all."},
+{id:'gratitude-1',category:'gratitude',text:"Gratitude does not require that everything be good; it asks only that I notice what is.",reflection:"What is one imperfect thing in your life you can still be grateful for?",action:"Say it out loud to someone today, even briefly."},
+{id:'purpose-1',category:'purpose',text:"My purpose does not have to be loud to be real.",reflection:"What quiet contribution do you make that the world rarely applauds?",action:"Do that quiet thing today with full attention and a little pride."},
+{id:'relationships-1',category:'relationships',text:"I can love people without carrying what belongs to them.",reflection:"Whose emotions have you been carrying that were never yours to hold?",action:"Name one thing today you will gently hand back to its rightful owner."},
+{id:'resilience-1',category:'resilience',text:"I have survived every hard day so far; that is not nothing.",reflection:"What is one difficult season you made it through that you rarely acknowledge?",action:"Name it today, out loud or in writing, as evidence of your strength."},
+{id:'boundaries-1',category:'boundaries',text:"Saying no to one thing is saying yes to my own capacity.",reflection:"What have you said yes to recently that you didn't actually have room for?",action:"Decline one small thing today that doesn't serve you."},
+{id:'forgiveness-1',category:'forgiveness',text:"Forgiving someone does not mean reopening the door to them.",reflection:"Have you been confusing forgiveness with reconciliation?",action:"Reflect on what forgiveness could look like today without renewed access."},
+{id:'mindfulness-1',category:'mindfulness',text:"This breath is the only moment I actually have to live in.",reflection:"Where does your mind usually go when it leaves the present?",action:"Take five slow, conscious breaths right now, noticing only the air."},
+{id:'growth-1',category:'growth',text:"I am allowed to outgrow versions of myself, even ones others preferred.",reflection:"What old version of you are people still expecting, that no longer fits?",action:"Do one thing today that reflects who you're becoming, not who you were."},
+
+{id:'healing-2',category:'healing',text:"The parts of me that were hurt are not broken; they are asking to be understood.",reflection:"What is one part of your story that you have judged rather than understood?",action:"Write a single sentence today addressed to that part of yourself, offering understanding instead of judgment."},
+{id:'confidence-2',category:'confidence',text:"I do not need to shrink myself to make others comfortable.",reflection:"When was the last time you made yourself smaller to keep the peace?",action:"Speak one honest opinion today, even if your voice shakes a little."},
+{id:'gratitude-2',category:'gratitude',text:"I can be thankful for how far I've come without pretending the road was easy.",reflection:"What have you survived that you rarely give yourself credit for?",action:"Write one sentence honoring that survival."},
+{id:'purpose-2',category:'purpose',text:"I am allowed to change direction without having wasted the years before.",reflection:"What earlier chapter of your life still quietly serves you, even if you've moved on from it?",action:"Write down one skill from your past that still shapes who you are now."},
+{id:'relationships-2',category:'relationships',text:"Healthy connection requires honesty more than harmony.",reflection:"Where have you chosen fake peace over a needed conversation?",action:"Say one true thing today that you've been avoiding, with kindness."},
+{id:'resilience-2',category:'resilience',text:"Resilience is not never falling; it is learning how I rise.",reflection:"What has your particular way of recovering taught you about yourself?",action:"Write down your personal pattern for getting back up."},
+{id:'boundaries-2',category:'boundaries',text:"A boundary is not rejection; it is information about how to love me well.",reflection:"What boundary do you wish someone in your life understood better?",action:"State that boundary clearly to one person today."},
+{id:'forgiveness-2',category:'forgiveness',text:"I forgive myself for what I didn't know back then.",reflection:"What decision do you judge your past self for, forgetting what you knew at the time?",action:"Write a short note of forgiveness to your younger self."},
+{id:'mindfulness-2',category:'mindfulness',text:"I can observe my thoughts without becoming them.",reflection:"What thought has been looping today that isn't actually a fact?",action:"Name it as 'just a thought' the next time it arises."},
+{id:'growth-2',category:'growth',text:"Discomfort is often the sound of me growing.",reflection:"What discomfort lately might actually be growth in disguise?",action:"Lean into one uncomfortable but meaningful task today."},
+
+{id:'healing-3',category:'healing',text:"Healing is not a return to who I was, but a becoming of who I am now.",reflection:"What has this season of your life taught you that your old self didn't know?",action:"Name one way you've changed for the better this year, and say it out loud."},
+{id:'confidence-3',category:'confidence',text:"My worth was never up for evaluation.",reflection:"Whose approval have you been quietly seeking before you allow yourself to feel enough?",action:"Do one thing today purely because it matters to you, not because it will be noticed."},
+{id:'gratitude-3',category:'gratitude',text:"Small joys are not small; they are the architecture of a good life.",reflection:"What tiny moment today almost went unnoticed?",action:"Pause and savor one ordinary pleasure for sixty full seconds."},
+{id:'purpose-3',category:'purpose',text:"Meaning is often found in what I give, not only in what I achieve.",reflection:"Who or what have you poured into lately without expecting anything back?",action:"Offer one act of service today, however small."},
+{id:'relationships-3',category:'relationships',text:"I am worthy of relationships where I don't have to perform.",reflection:"In which relationship do you feel most free to be unfinished and human?",action:"Reach out to that person today, just to connect."},
+{id:'resilience-3',category:'resilience',text:"I can be tired and still be strong.",reflection:"Where have you equated exhaustion with weakness?",action:"Rest today without calling it a failure."},
+{id:'boundaries-3',category:'boundaries',text:"I do not owe an explanation for every limit I set.",reflection:"Where do you find yourself over-explaining your no?",action:"Practice saying no today in a single sentence, nothing more."},
+{id:'forgiveness-3',category:'forgiveness',text:"Releasing resentment is a gift I give my own nervous system.",reflection:"What grudge have you been carrying that costs you more than it costs them?",action:"Notice, without acting on it, one resentment you're ready to loosen your grip on."},
+{id:'mindfulness-3',category:'mindfulness',text:"Stillness is not empty; it is where I meet myself.",reflection:"When did you last sit in silence without reaching for a distraction?",action:"Spend three minutes today in silence, without your phone."},
+{id:'growth-3',category:'growth',text:"Growth is rarely a straight line, and that doesn't make it less real.",reflection:"Where have you mistaken a setback for a failure of your growth?",action:"Reframe one recent setback today as part of the process, not the opposite of it."},
+
+{id:'healing-4',category:'healing',text:"I can hold grief and gratitude in the same hand.",reflection:"Where in your life are sorrow and thankfulness both true at once?",action:"Let yourself feel a hard emotion fully for two minutes today without trying to fix it."},
+{id:'confidence-4',category:'confidence',text:"I trust the version of me that is still learning.",reflection:"What mistake are you still quietly punishing yourself for?",action:"Write down one lesson that mistake taught you, and thank it."},
+{id:'gratitude-4',category:'gratitude',text:"I am grateful for the people who stayed, and at peace with those who didn't.",reflection:"Who in your life deserves a quiet thank you today?",action:"Send one message of appreciation — no occasion required."},
+{id:'purpose-4',category:'purpose',text:"I don't need the whole map, only the next right step.",reflection:"What decision have you been overthinking because you can't see the whole path?",action:"Identify and take just the next single step today."},
+{id:'relationships-4',category:'relationships',text:"Distance from someone can be an act of self-respect, not failure.",reflection:"Is there a relationship where your limits have been repeatedly tested?",action:"Reflect honestly today on what that relationship truly costs you."},
+{id:'resilience-4',category:'resilience',text:"Every setback has taught my nervous system something useful, even if it didn't feel useful at the time.",reflection:"What has a past difficulty quietly prepared you for?",action:"Notice one skill from a hard season that helps you today."},
+{id:'boundaries-4',category:'boundaries',text:"Protecting my peace is not selfish; it is sustainable.",reflection:"What drains your peace that you've been tolerating out of guilt?",action:"Reduce your exposure to it today, even slightly."},
+{id:'forgiveness-4',category:'forgiveness',text:"Forgiveness is a process, not a single decision I make once.",reflection:"Where are you further along in forgiving than you give yourself credit for?",action:"Acknowledge today how far you've already come."},
+{id:'mindfulness-4',category:'mindfulness',text:"My senses can anchor me when my thoughts cannot.",reflection:"What do you see, hear, or feel right now that you hadn't noticed?",action:"Name five things you can sense in this exact moment."},
+{id:'growth-4',category:'growth',text:"I can learn from a mistake without making it my identity.",reflection:"What mistake have you let define you longer than it deserved to?",action:"Separate the mistake from your self-worth in a single sentence today."},
+
+{id:'healing-5',category:'healing',text:"My body carries wisdom my mind hasn't caught up to yet.",reflection:"What has your body been trying to tell you that you've been too busy to hear?",action:"Take three slow breaths right now and notice, without judgment, what physical sensation is present."},
+{id:'confidence-5',category:'confidence',text:"I can be both humble and certain of my own value.",reflection:"Where do you confuse humility with self-erasure?",action:"Accept a compliment today without deflecting it."},
+{id:'gratitude-5',category:'gratitude',text:"My life does not need to be extraordinary to be worth appreciating.",reflection:"What ordinary part of your day do you usually rush past?",action:"Slow down for one routine task today and notice it fully."},
+{id:'purpose-5',category:'purpose',text:"My purpose can hold both ambition and rest.",reflection:"Where have you confused constant striving with meaning?",action:"Rest for fifteen minutes today without guilt, and call it part of the purpose."},
+{id:'relationships-5',category:'relationships',text:"I can disagree with someone and still hold them with care.",reflection:"Who do you love but often clash with?",action:"Approach your next conversation with them from curiosity instead of defense."},
+{id:'resilience-5',category:'resilience',text:"I don't have to face hard things alone to be resilient.",reflection:"Who could you let in on something you've been carrying solo?",action:"Ask one person for support today."},
+{id:'boundaries-5',category:'boundaries',text:"I can hold my ground with a soft voice.",reflection:"Where do you assume boundaries must be harsh to be effective?",action:"Set one boundary today calmly, without over-apologizing."},
+{id:'forgiveness-5',category:'forgiveness',text:"I can forgive and still hold someone accountable.",reflection:"Where have you confused forgiveness with excusing harm?",action:"Name one boundary that keeps accountability intact even as you release resentment."},
+{id:'mindfulness-5',category:'mindfulness',text:"I don't have to fix this moment; I can just be in it.",reflection:"What are you trying to fix right now that simply needs to be felt?",action:"Let one feeling exist today without trying to change it."},
+{id:'growth-5',category:'growth',text:"Every version of me that got me here deserves some credit.",reflection:"What did the you of five years ago do that made today possible?",action:"Thank your past self today for one specific decision."},
+];
+
+/* ---------------- state / storage ---------------- */
+const LS = {
+  fav: 'dg_favourites',
+  journal: 'dg_journal',
+  streak: 'dg_streak',
+  theme: 'dg_theme',
+  actionsDone: 'dg_actions_done',
+  reminder: 'dg_reminder',
+  audio: 'dg_audio',
+};
+function loadJSON(key, fallback){
+  try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+  catch(e){ return fallback; }
+}
+function saveJSON(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+let favourites = new Set(loadJSON(LS.fav, []));
+let journal = loadJSON(LS.journal, {});       // { 'YYYY-MM-DD': {affId, text, updatedAt} }
+let actionsDone = loadJSON(LS.actionsDone, {}); // { 'YYYY-MM-DD': true }
+let theme = localStorage.getItem(LS.theme) || 'light';
+let reminderOn = loadJSON(LS.reminder, false);
+let audioOn = loadJSON(LS.audio, true);
+let activeCategoryFilter = 'all';
+let currentUtterance = null;
+
+function todayISO(){
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function dayOfYear(d){
+  const start = new Date(d.getFullYear(),0,0);
+  const diff = d - start;
+  return Math.floor(diff / 86400000);
+}
+function catInfo(key){ return CATEGORIES.find(c=>c.key===key) || CATEGORIES[0]; }
+
+/* ---------------- today's affirmation ---------------- */
+const now = new Date();
+const todayIndex = dayOfYear(now) % AFFIRMATIONS.length;
+const todayAff = AFFIRMATIONS[todayIndex];
+
+/* ---------------- streak logic ---------------- */
+function updateStreak(){
+  let s = loadJSON(LS.streak, {count:0, last:null});
+  const today = todayISO();
+  if (s.last === today){ /* already counted today */ }
+  else {
+    const yest = new Date(); yest.setDate(yest.getDate()-1);
+    const yestISO = yest.getFullYear()+'-'+String(yest.getMonth()+1).padStart(2,'0')+'-'+String(yest.getDate()).padStart(2,'0');
+    if (s.last === yestISO){ s.count += 1; } else { s.count = 1; }
+    s.last = today;
+    saveJSON(LS.streak, s);
+  }
+  return s;
+}
+const streakData = updateStreak();
+
+function renderStreak(){
+  const row = document.getElementById('streakRow');
+  row.innerHTML = '';
+  const total = Math.min(streakData.count, 12);
+  const dotsToShow = Math.max(total, 5);
+  for (let i=0;i<dotsToShow;i++){
+    const dot = document.createElement('div');
+    dot.className = 'streak-dot' + (i < total ? ' filled' : '');
+    row.appendChild(dot);
+  }
+  const label = document.createElement('span');
+  label.className = 'streak-label';
+  label.textContent = streakData.count === 1 ? '1 day with you' : streakData.count + ' days with you';
+  row.appendChild(label);
+}
+
+/* ---------------- rendering: Today ---------------- */
+function renderToday(){
+  const cat = catInfo(todayAff.category);
+  const color = getComputedStyle(document.documentElement).getPropertyValue('--cat-'+todayAff.category).trim();
+
+  document.getElementById('orb').style.setProperty('--orb-color', color);
+  const pill = document.getElementById('todayCatPill');
+  pill.textContent = cat.label;
+  pill.style.setProperty('--pill-color', color);
+
+  document.getElementById('todayAffirmation').textContent = todayAff.text;
+  document.getElementById('todayReflection').textContent = todayAff.reflection;
+  document.getElementById('todayAction').textContent = todayAff.action;
+
+  document.getElementById('headerDate').textContent = now.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+
+  const favBtn = document.getElementById('todayFavBtn');
+  favBtn.classList.toggle('active', favourites.has(todayAff.id));
+
+  const done = !!actionsDone[todayISO()];
+  document.getElementById('actionCheck').classList.toggle('checked', done);
+
+  renderStreak();
+}
+
+document.getElementById('todayFavBtn').addEventListener('click', ()=>{
+  toggleFav(todayAff.id);
+  document.getElementById('todayFavBtn').classList.toggle('active', favourites.has(todayAff.id));
+});
+function toggleFav(id){
+  if (favourites.has(id)) { favourites.delete(id); showToast('Removed from favourites'); }
+  else { favourites.add(id); showToast('Saved to favourites'); }
+  saveJSON(LS.fav, Array.from(favourites));
+}
+
+function toggleActionDone(){
+  const key = todayISO();
+  actionsDone[key] = !actionsDone[key];
+  saveJSON(LS.actionsDone, actionsDone);
+  document.getElementById('actionCheck').classList.toggle('checked', !!actionsDone[key]);
+  if (actionsDone[key]) showToast("Marked today's action complete");
+}
+document.getElementById('actionCheck').addEventListener('click', toggleActionDone);
+document.getElementById('todayAction').addEventListener('click', toggleActionDone);
+
+/* ---- speak ---- */
+function speak(text){
+  if (!('speechSynthesis' in window)){ showToast('Voice narration is not supported on this device'); return; }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 0.92; utter.pitch = 1.0;
+  currentUtterance = utter;
+  window.speechSynthesis.speak(utter);
+}
+document.getElementById('todaySpeakBtn').addEventListener('click', ()=>{
+  if (!audioOn){ showToast('Enable spoken affirmations in Settings first'); return; }
+  speak(`${todayAff.text}. Reflect: ${todayAff.reflection}. Today's action: ${todayAff.action}`);
+});
+
+/* ---- share as image ---- */
+function wrapText(ctx, text, x, y, maxWidth, lineHeight){
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+  for (let n=0; n<words.length; n++){
+    const testLine = line + words[n] + ' ';
+    if (ctx.measureText(testLine).width > maxWidth && n > 0){
+      lines.push(line.trim()); line = words[n] + ' ';
+    } else { line = testLine; }
+  }
+  lines.push(line.trim());
+  lines.forEach((l,i)=> ctx.fillText(l, x, y + i*lineHeight));
+  return lines.length;
+}
+function generateShareImage(aff){
+  const canvas = document.getElementById('shareCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const color = getComputedStyle(document.documentElement).getPropertyValue('--cat-'+aff.category).trim() || '#6E8F72';
+
+  const isDark = theme === 'dark';
+  ctx.fillStyle = isDark ? '#1E211B' : '#F6F2EA';
+  ctx.fillRect(0,0,W,H);
+
+  const grad = ctx.createRadialGradient(W/2, H*0.4, 40, W/2, H*0.4, 520);
+  grad.addColorStop(0, color + '55');
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.beginPath(); ctx.arc(W/2, H*0.4, 520, 0, Math.PI*2); ctx.fill();
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = color;
+  ctx.font = '600 30px Work Sans, sans-serif';
+  ctx.fillText(catInfo(aff.category).label.toUpperCase(), W/2, 200);
+
+  ctx.fillStyle = isDark ? '#EFEAE0' : '#2C2A24';
+  ctx.font = 'italic 500 56px Fraunces, serif';
+  wrapText(ctx, aff.text, W/2, 400, W-180, 74);
+
+  ctx.font = '400 30px Work Sans, sans-serif';
+  ctx.fillStyle = isDark ? '#B9B3A4' : '#635E52';
+  ctx.fillText("Today's Affirmation", W/2, H-90);
+
+  return canvas;
+}
+async function shareAffirmation(aff){
+  const canvas = generateShareImage(aff);
+  canvas.toBlob(async (blob)=>{
+    const file = new File([blob], 'daily-grounding.png', { type:'image/png' });
+    if (navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      try{ await navigator.share({ files:[file], title:'Daily Grounding' }); return; }
+      catch(e){ /* fall through to download */ }
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'daily-grounding.png'; a.click();
+    URL.revokeObjectURL(url);
+    showToast('Image saved');
+  }, 'image/png');
+}
+document.getElementById('todayShareBtn').addEventListener('click', ()=> shareAffirmation(todayAff));
+
+/* ---------------- Journal modal ---------------- */
+const journalModal = document.getElementById('journalModal');
+let journalTargetAff = null;
+
+function openJournalModal(aff){
+  journalTargetAff = aff;
+  document.getElementById('journalModalPrompt').textContent = aff.reflection;
+  const existing = journal[todayISO()];
+  document.getElementById('journalTextarea').value = (existing && existing.affId === aff.id) ? existing.text : '';
+  journalModal.classList.add('open');
+  setTimeout(()=> document.getElementById('journalTextarea').focus(), 100);
+}
+function closeJournalModal(){ journalModal.classList.remove('open'); }
+document.getElementById('journalQuickBtn').addEventListener('click', ()=> openJournalModal(todayAff));
+document.getElementById('journalModalClose').addEventListener('click', closeJournalModal);
+document.getElementById('journalCancelBtn').addEventListener('click', closeJournalModal);
+document.getElementById('journalSaveBtn').addEventListener('click', ()=>{
+  const text = document.getElementById('journalTextarea').value.trim();
+  if (!text){ closeJournalModal(); return; }
+  journal[todayISO()] = { affId: journalTargetAff.id, text, updatedAt: Date.now() };
+  saveJSON(LS.journal, journal);
+  closeJournalModal();
+  showToast('Reflection saved');
+  renderJournal();
+});
+journalModal.addEventListener('click', (e)=>{ if (e.target === journalModal) closeJournalModal(); });
+
+/* ---------------- Browse ---------------- */
+function renderChips(){
+  const row = document.getElementById('chipRow');
+  row.innerHTML = '';
+  const allChip = document.createElement('button');
+  allChip.className = 'chip' + (activeCategoryFilter==='all' ? ' active':'');
+  allChip.textContent = 'All';
+  allChip.style.background = activeCategoryFilter==='all' ? 'var(--ink)' : '';
+  allChip.addEventListener('click', ()=>{ activeCategoryFilter='all'; renderChips(); renderBrowse(); });
+  row.appendChild(allChip);
+
+  CATEGORIES.forEach(c=>{
+    const chip = document.createElement('button');
+    const color = getComputedStyle(document.documentElement).getPropertyValue('--cat-'+c.key).trim();
+    chip.className = 'chip' + (activeCategoryFilter===c.key ? ' active':'');
+    chip.textContent = c.label;
+    chip.style.background = activeCategoryFilter===c.key ? color : '';
+    chip.addEventListener('click', ()=>{ activeCategoryFilter=c.key; renderChips(); renderBrowse(); });
+    row.appendChild(chip);
+  });
+}
+
+function makeListCard(aff){
+  const color = getComputedStyle(document.documentElement).getPropertyValue('--cat-'+aff.category).trim();
+  const card = document.createElement('div');
+  card.className = 'list-card';
+  card.style.setProperty('--card-color', color);
+  card.innerHTML = `
+    <div class="cat-tag">${catInfo(aff.category).label}</div>
+    <div class="aff">${aff.text}</div>
+    <button class="fav-toggle ${favourites.has(aff.id)?'active':''}" aria-label="Save to favourites">
+      <svg viewBox="0 0 24 24" fill="${favourites.has(aff.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9C.5 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.4C11.3 5.2 12.8 4 15 4c4 0 5.5 4 4 8-2.5 4.4-10 9-10 9z"/></svg>
+    </button>
+  `;
+  card.querySelector('.fav-toggle').addEventListener('click', (e)=>{
+    e.stopPropagation();
+    toggleFav(aff.id);
+    card.querySelector('.fav-toggle').classList.toggle('active');
+    card.querySelector('.fav-toggle svg').setAttribute('fill', favourites.has(aff.id)?'currentColor':'none');
+    if (document.getElementById('screen-favourites').classList.contains('active')) renderFavourites();
+  });
+  card.addEventListener('click', ()=> openJournalModal(aff));
+  return card;
+}
+
+function renderBrowse(){
+  const list = document.getElementById('browseList');
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  list.innerHTML = '';
+  const filtered = AFFIRMATIONS.filter(a=>{
+    const matchesCat = activeCategoryFilter==='all' || a.category === activeCategoryFilter;
+    const matchesQ = !q || a.text.toLowerCase().includes(q) || a.reflection.toLowerCase().includes(q) || a.action.toLowerCase().includes(q);
+    return matchesCat && matchesQ;
+  });
+  if (filtered.length === 0){
+    list.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <p>Nothing matches yet.<br>Try a different word or category.</p></div>`;
+    return;
+  }
+  filtered.forEach(a=> list.appendChild(makeListCard(a)));
+}
+document.getElementById('searchInput').addEventListener('input', renderBrowse);
+
+/* ---------------- Journal list ---------------- */
+function renderJournal(){
+  const list = document.getElementById('journalList');
+  list.innerHTML = '';
+  const entries = Object.entries(journal).sort((a,b)=> b[0].localeCompare(a[0]));
+  if (entries.length === 0){
+    list.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>
+      <p>Your reflections will appear here.<br>Start by writing about today's affirmation.</p></div>`;
+    return;
+  }
+  entries.forEach(([date, entry])=>{
+    const aff = AFFIRMATIONS.find(a=> a.id === entry.affId);
+    const card = document.createElement('div');
+    card.className = 'journal-entry';
+    const d = new Date(date + 'T00:00:00');
+    card.innerHTML = `
+      <div class="je-date">${d.toLocaleDateString(undefined,{weekday:'short', month:'short', day:'numeric'})}</div>
+      <div class="je-prompt">${aff ? aff.reflection : ''}</div>
+      <div class="je-text">${entry.text.replace(/</g,'&lt;')}</div>
+      <div class="je-actions">
+        <button class="je-link" data-action="edit">Edit</button>
+        <button class="je-link" data-action="delete">Delete</button>
+      </div>
+    `;
+    card.querySelector('[data-action="edit"]').addEventListener('click', ()=>{
+      if (aff) openJournalModal(aff);
+    });
+    card.querySelector('[data-action="delete"]').addEventListener('click', ()=>{
+      delete journal[date]; saveJSON(LS.journal, journal); renderJournal();
+      showToast('Entry deleted');
+    });
+    list.appendChild(card);
+  });
+}
+
+/* ---------------- Favourites ---------------- */
+function renderFavourites(){
+  const list = document.getElementById('favouritesList');
+  list.innerHTML = '';
+  const favAffs = AFFIRMATIONS.filter(a=> favourites.has(a.id));
+  if (favAffs.length === 0){
+    list.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7.5-4.6-10-9C.5 8 2 4 6 4c2.2 0 3.7 1.2 4.5 2.4C11.3 5.2 12.8 4 15 4c4 0 5.5 4 4 8-2.5 4.4-10 9-10 9z"/></svg>
+      <p>Nothing saved yet.<br>Tap the heart on any affirmation to keep it here.</p></div>`;
+    return;
+  }
+  favAffs.forEach(a=> list.appendChild(makeListCard(a)));
+}
+
+/* ---------------- Settings ---------------- */
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem(LS.theme, theme);
+  document.getElementById('themeOptLight').classList.toggle('active', theme==='light');
+  document.getElementById('themeOptDark').classList.toggle('active', theme==='dark');
+  const icon = document.getElementById('themeIcon');
+  icon.innerHTML = theme === 'dark'
+    ? '<path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/>'
+    : '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>';
+}
+document.getElementById('themeBtn').addEventListener('click', ()=>{
+  theme = theme === 'light' ? 'dark' : 'light';
+  applyTheme();
+  if (document.getElementById('screen-browse').classList.contains('active')) renderChips();
+});
+document.getElementById('themeOptLight').addEventListener('click', ()=>{ theme='light'; applyTheme(); });
+document.getElementById('themeOptDark').addEventListener('click', ()=>{ theme='dark'; applyTheme(); });
+
+function renderSwitches(){
+  document.getElementById('reminderSwitch').classList.toggle('on', reminderOn);
+  document.getElementById('audioSwitch').classList.toggle('on', audioOn);
+}
+document.getElementById('reminderSwitch').addEventListener('click', async ()=>{
+  if (!reminderOn && 'Notification' in window){
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted'){ showToast('Notifications were not enabled'); return; }
+  }
+  reminderOn = !reminderOn;
+  saveJSON(LS.reminder, reminderOn);
+  renderSwitches();
+  showToast(reminderOn ? 'Daily reminder enabled' : 'Daily reminder turned off');
+});
+document.getElementById('audioSwitch').addEventListener('click', ()=>{
+  audioOn = !audioOn;
+  saveJSON(LS.audio, audioOn);
+  renderSwitches();
+});
+document.getElementById('clearDataRow').addEventListener('click', ()=>{
+  if (confirm('This will permanently remove your favourites, journal entries, and streak from this device. Continue?')){
+    Object.values(LS).forEach(k=> localStorage.removeItem(k));
+    favourites = new Set(); journal = {}; actionsDone = {};
+    renderToday(); renderJournal(); renderFavourites();
+    showToast('Local data cleared');
+  }
+});
+
+/* ---------------- Navigation ---------------- */
+const screens = ['today','browse','journal','favourites','settings'];
+function goTo(screenName){
+  screens.forEach(s=>{
+    document.getElementById('screen-'+s).classList.toggle('active', s===screenName);
+  });
+  document.querySelectorAll('.nav-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.screen === screenName);
+  });
+  if (screenName === 'browse') renderBrowse();
+  if (screenName === 'journal') renderJournal();
+  if (screenName === 'favourites') renderFavourites();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> goTo(btn.dataset.screen));
+});
+
+/* ---------------- toast ---------------- */
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+/* ---------------- init ---------------- */
+applyTheme();
+renderSwitches();
+renderChips();
+renderToday();
+document.getElementById('libCount').textContent = AFFIRMATIONS.length;
+</script>
+</body>
+</html>
